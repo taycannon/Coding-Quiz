@@ -7,54 +7,47 @@
     <title>Coding Quiz Game</title>
 </head>
 <body>
-    <h1>Do you know your Code?</h1>
-<button id="start">Start</button>
-<div id="timer">60</div>
-<!-- <div id="hide questions"></div> -->
-<div class="hide">
-    <h2>Question 1:</h2>
-    <p>What is the definition HTML?</p>
-    <ul>
-        <li onclick="checkAnswer(this)">Hypertext Markup Language</li>
-        <li onclick="checkAnswer(this)">Homepage Time Mini Line</li>
-        <li onclick="checkAnswer(this)">It Does Not Mean Anything</li>
-        <li onclick="checkAnswer(this)">Haliey Thomas Mia Liam</li>
-    </ul>
-</div>
-<div class="hide">
-    <h2>Question 2:</h2>
-        <p>What is a CSS?</p>
-        <ul>
-            <li onclick="checkAnswer(this)">Hypertext Markup Language</li>
-            <li onclick="checkAnswer(this)">Homepage Time Mini Line</li>
-            <li onclick="checkAnswer(this)">It Does Not Mean Anything</li>
-            <li onclick="checkAnswer(this)">Haliey Thomas Mia Liam</li>
-        </ul>
-</div>
-    <h2>Question 3:</h2>
-        <p>Which answer is the required tags in HTML?</p>
-        <ul>
-            <li onclick="checkAnswer(this)">Hypertext Markup Language</li>
-            <li onclick="checkAnswer(this)">Homepage Time Mini Line</li>
-            <li onclick="checkAnswer(this)">It Does Not Mean Anything</li>
-            <li onclick="checkAnswer(this)">Haliey Thomas Mia Liam</li>
-        </ul>
+    <div id="quiz">
+        <!-- Start Button -->
+        <button id="startButton">Start Quiz</button>
+        <h1>Do you know your Code?</h1>
+        <!-- Timer -->
+        <div id="timer">Time: 0</div>
 
-    <h2>Question 4:</h2>
-        <p>What sign is an ID in CSS?</p>
-        <ul>
-            <li onclick="checkAnswer(this)">Hypertext Markup Language</li>
-            <li onclick="checkAnswer(this)">Homepage Time Mini Line</li>
-            <li onclick="checkAnswer(this)">It Does Not Mean Anything</li>
-            <li onclick="checkAnswer(this)">Haliey Thomas Mia Liam</li>
-        </ul>
+        <!-- Question 1 -->
+        <div class="question">
+            <h2>What is HTML?</h2>
+            <ul>
+                <li data-correct="true">Hypertext Markup Language</li>
+                <li>Hyperlink and Text Markup Language</li>
+                <li>Highly Textured Markup Language</li>
+                <li>Hypertext Transfer Markup Language</li>
+            </ul>
+        </div>
 
+        <!-- Question 2 -->
+        <div class="question">
+            <h2>What is CSS?</h2>
+            <ul>
+                <li>Cascading Style Sheet</li>
+                <li data-correct="true">Cascading Style Syntax</li>
+                <li>Creative Style Sheet</li>
+                <li>Cool Style Syntax</li>
+            </ul>
+        </div>
 
+        <!-- Question 3 -->
+        <div class="question">
+            <h2>What is JavaScript?</h2>
+            <ul>
+                <li data-correct="true">A programming language</li>
+                <li>A style sheet language</li>
+                <li>A markup language</li>
+                <li>An animation language</li>
+            </ul>
+        </div>
+    </div>
 
-
-
-
-
-    <script src="./script.js"></script>
+    <script src="./copy2.0.js"></script>
 </body>
 </html>

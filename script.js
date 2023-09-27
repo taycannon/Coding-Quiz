@@ -1,60 +1,65 @@
-/*** setting html elements variable */
-const welcomePage = document.getElementById('welcomePage');
-const quizPage = document.getElementById('quizPage');
-const startButton = document.getElementById('startButton');
-let sectionsArray = [welcomePage, quizPage]
+const questions = document.querySelectorAll('.question');
 
-let quizTime = 30;
-let timer = document.getElementById('timer');
-timer.textContent = `Time: ${quizTime}`;
-let timeLeft;
+let timerValue = 30;
+let currentQuestionIndex = 0;
+let timerInterval;
 
-/** quiz content */
-let questionContent = [
-    question1 = {
-        question:"What colour is the ocean?",
-        answers:["red", "brown", "yellow", "blue"],
-        correctAnswer:"blue"
-    },
-    question2 = {
-        question:"What colour is the OCEAN?",
-        answers:["red", "brown", "yellow", "blue"],
-        correctAnswer:"blue"
-    },
-    question3 = {
-        question:"What COLOUR is the ocean?",
-        answers:["red", "brown", "yellow", "blue"],
-        correctAnswer:"blue"
-    }
-];
-
-
-startButton.addEventListener('click', startGame);
-
-function startGame(){
-    countDown();
-    hideSections();
-    quizPage.classList.remove('hide');
-}
-
-function hideSections(){
-    for (let index = 0; index < sectionsArray.length; index++) {
-       if(!sectionsArray[index].classList.contains('hide')){
-            sectionsArray[index].classList.add('hide');
-       }
-        
+// Showing the question
+function showQuestion(index) {
+    if (index >= 0 && index < questions.length) {
+        questions[index].style.display = 'block';
+        console.log(showQuestion);
     }
 }
 
-function countDown(){
-    timeLeft = quizTime;
-    let countDown = setInterval(() => {
-        timeLeft--;
-        timer.textContent = `Time: ${timeLeft}`;
+//Hiding the questions
+function hideAllQuestions() {
+    questions.forEach(question => {
+        question.style.display = 'none';
+    });
+}
 
-        if (timeLeft < 0){
-            clearInterval(countDown);
-            timer.classList.add('hide');
+//starting timer
+function startTimer() {
+    timerInterval = setInterval(() => {
+        timerValue--;
+        document.getElementById('timer').textContent = `Time: ${timerValue}`;
+        if (timerValue === 0) {
+            clearInterval(timerInterval);
+            alert('Time is up!');
         }
     }, 1000);
 }
+
+//Start button click
+document.getElementById('startButton').addEventListener('click', () => {
+    startTimer(); 
+    document.getElementById('startButton').style.display = 'none'; 
+    showQuestion(currentQuestionIndex); 
+});
+
+//answer choices
+questions.forEach((question, index) => {
+    const answerChoices = question.querySelectorAll('li');
+    answerChoices.forEach(choice => {
+        choice.addEventListener('click', () => {
+            const isCorrect = choice.getAttribute('data-correct') === 'true';
+            if (isCorrect) {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    hideAllQuestions(); 
+                    showQuestion(currentQuestionIndex); 
+                } else {
+                    clearInterval(timerInterval);
+                    alert('Congratulations! You have completed the quiz.');
+                }
+            }
+        });
+    });
+});
+
+// Hide all questions
+hideAllQuestions();
+
+
+

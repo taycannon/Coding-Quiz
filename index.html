@@ -7,29 +7,46 @@
     <title>Coding Quiz Game</title>
 </head>
 <body>
-    <div id="timer"></div>
-    <!-- welcome section -->
-    <div id="welcomePage">
+    <div id="quiz">
         <h1>Do you know your Code?</h1>
+        <!-- Start Button -->
+        <button id="startButton">Start Quiz</button>
+        <!-- Timer -->
+        <div id="timer"></div>
 
-        <button id="startButton">Start</button>
+        <!-- Questions-->
+        <div class="question">
+            <h2>What is HTML?</h2>
+            <ul>
+                <li data-correct="true">Hypertext Markup Language</li>
+                <li>Hyperlink and Text Markup Language</li>
+                <li>Highly Textured Markup Language</li>
+                <li>Hypertext Transfer Markup Language</li>
+            </ul>
+        </div>
+
+       
+        <div class="question">
+            <h2>What is CSS?</h2>
+            <ul>
+                <li>Cascading Style Sheet</li>
+                <li data-correct="true">Cascading Style Syntax</li>
+                <li>Creative Style Sheet</li>
+                <li>Cool Style Syntax</li>
+            </ul>
+        </div>
+
+        
+        <div class="question">
+            <h2>What is JavaScript?</h2>
+            <ul>
+                <li data-correct="true">A programming language</li>
+                <li>A style sheet language</li>
+                <li>A markup language</li>
+                <li>An animation language</li>
+            </ul>
+        </div>
     </div>
-    <!-- quiz section -->
-    <div id="quizPage" class="hide">
-        <h2 >What colour is the ocean?</h2>
-        <p></p>
-        <ul>
-            <li>Red</li>
-            <li>Blue</li>
-        </ul>
-    </div>
-
-
-
-
-
-
-
 
     <script src="./script.js"></script>
 </body>
