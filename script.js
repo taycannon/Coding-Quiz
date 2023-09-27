@@ -1,3 +1,4 @@
+// Selecting all questions
 const questions = document.querySelectorAll('.question');
 
 let timerValue = 30;
@@ -8,18 +9,17 @@ let timerInterval;
 function showQuestion(index) {
     if (index >= 0 && index < questions.length) {
         questions[index].style.display = 'block';
-        console.log(showQuestion);
     }
 }
 
-//Hiding the questions
+// Hiding all questions
 function hideAllQuestions() {
     questions.forEach(question => {
         question.style.display = 'none';
     });
 }
 
-//starting timer
+// Starting the timer
 function startTimer() {
     timerInterval = setInterval(() => {
         timerValue--;
@@ -31,35 +31,37 @@ function startTimer() {
     }, 1000);
 }
 
-//Start button click
+// Correct answer
+function handleCorrectAnswer() {
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        hideAllQuestions();
+        showQuestion(currentQuestionIndex);
+    } else {
+        clearInterval(timerInterval);
+        alert('Congratulations! You have completed the quiz.');
+    }
+}
+
+// Start button click
 document.getElementById('startButton').addEventListener('click', () => {
-    startTimer(); 
-    document.getElementById('startButton').style.display = 'none'; 
-    showQuestion(currentQuestionIndex); 
+    startTimer();
+    document.getElementById('startButton').style.display = 'none';
+    showQuestion(currentQuestionIndex);
 });
 
-//answer choices
+// Answer choices
 questions.forEach((question, index) => {
     const answerChoices = question.querySelectorAll('li');
     answerChoices.forEach(choice => {
         choice.addEventListener('click', () => {
             const isCorrect = choice.getAttribute('data-correct') === 'true';
             if (isCorrect) {
-                currentQuestionIndex++;
-                if (currentQuestionIndex < questions.length) {
-                    hideAllQuestions(); 
-                    showQuestion(currentQuestionIndex); 
-                } else {
-                    clearInterval(timerInterval);
-                    alert('Congratulations! You have completed the quiz.');
-                }
+                handleCorrectAnswer();
             }
         });
     });
 });
 
-// Hide all questions
+// Hide all questions initially
 hideAllQuestions();
-
-
-
